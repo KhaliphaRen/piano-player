@@ -1,0 +1,19 @@
+name: GitHub Pages Deployment
+
+on:
+  push:
+    branches:
+      - main # 这里改成你实际使用的分支名
+
+jobs:
+  deploy:
+    runs-on: ubuntu - latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup GitHub Pages
+        uses: peaceiris/actions - github - pages@v3
+        with:
+          publish_dir:./ # 这里的路径根据实际情况，如果静态文件在子目录，修改为对应子目录路径
+          github_token: ${{ secrets.GITHUB_TOKEN }}
